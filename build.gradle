@@ -14,6 +14,12 @@ java {
     }
 }
 
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
 repositories {
     mavenCentral()
     maven {
@@ -22,6 +28,12 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-aop:3.3.3'
+    implementation 'io.micrometer:micrometer-tracing-bridge-brave'
+    implementation 'io.zipkin.reporter2:zipkin-reporter-brave:3.4.0'
+    implementation 'io.micrometer:micrometer-registry-prometheus:latest.release'
+    implementation 'com.github.loki4j:loki-logback-appender:1.5.2'
     implementation 'io.confluent:kafka-avro-serializer:5.3.0'
     implementation 'io.confluent:kafka-schema-registry-client:7.7.0'
     implementation 'org.apache.avro:avro:1.12.0'
@@ -35,6 +47,7 @@ dependencies {
     testImplementation 'org.testcontainers:junit-jupiter'
     testImplementation 'org.testcontainers:kafka'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    annotationProcessor 'org.projectlombok:lombok'
 }
 
 tasks.named('test') {

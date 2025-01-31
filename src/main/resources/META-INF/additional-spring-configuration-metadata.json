@@ -4,5 +4,11 @@
       "name": "spring.mail.email",
       "type": "java.lang.String",
       "description": "Enter email from which you want to send."
-  }
-] }
+    },
+    {
+      "name": "loki.url",
+      "type": "java.lang.String",
+      "description": "URL for loki logging."
+    }
+  ]
+}
